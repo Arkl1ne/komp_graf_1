@@ -1,0 +1,204 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Тестирование</title>
+
+
+
+<script language="JavaScript">
+
+var time=150;		//время на тест
+var res_loc="http://www.propro.ru/graphbook/Graphbook/book/004/009/r001.html"	//результаты
+var q_num=0;	//текущий вопрос
+var r_cnt=0;    //счетчик правильных
+var all_cnt=5;  //всего вопросов
+var prg=time;
+var psize=30;	//размер прогресс-бара
+var step=psize/time;
+var scnt=0;
+
+var str=new Array();
+
+//Вопросы
+str[0]="Отметьте неверное утверждение"
+str[1]="Отметьте верное утверждение"
+str[2]="Отметьте неверное утверждение"
+str[3]="Какая линия является линией пересечения плоскости общего положения и грани призмы?"
+str[4]="Какая из перечисленных линий не является прямой общего положения?"
+
+var right=new Array();
+right[0]=4
+right[1]=1
+right[2]=2
+right[3]=2
+right[4]=5
+
+var str_ans1=new Array();
+str_ans1[0]="На чертеже показан алгоритм построения линии пересечения призмы и плоскостью общего положения"
+str_ans1[1]="Задача пересечения плоскости и пирамиды сведена к трем задачам пересечения прямой и плоскости"
+str_ans1[2]="Для решения задачи используется метод вспомогательных секущих плоскостей"
+str_ans1[3]="В качестве вспомогательных секущих плоскостей используются горизонтальные плоскости"
+str_ans1[4]="Грани призмы - плоскости общего положения"
+
+
+var str_ans2=new Array();
+str_ans2[0]="На чертеже изображено - призма и четыре плоскости"
+str_ans2[1]="Линия <b><i>(56)</i></b> - линия пересечения ребра призмы и плоскости общего положения"
+str_ans2[2]="Линия <b><i>(КМ)</i></b> - линия пересечения вспомогательной секущей плоскости с гранью призмы"
+str_ans2[3]="Линия <b><i>(12)</i></b> - линия пересечения вспомогательной секущей плоскости с ребром призмы"
+str_ans2[4]="На чертеже нет плоскостей общего положения"
+
+
+var str_ans3=new Array();
+str_ans3[0]="Основания призмы - горизонтальные плоскости"
+str_ans3[1]="Ребра призмы - плоскости общего положения"
+str_ans3[2]="Вспомогательные секущие плоскости - горизонтально проецирующие"
+str_ans3[3]="Линия <b><i>(КN)</i></b> - невидимая так как лежит на невидимой грани призмы"
+str_ans3[4]="Точка <b><i>М</i></b> - точка пересечения ребра призмы и плоскости общего положения"
+
+
+var str_ans4=new Array();
+str_ans4[0]="Линия <b><i>(12)</i></b>"
+str_ans4[1]="Линия <b><i>(КМ)</i></b>"
+str_ans4[2]="Линия <b><i>(56)</i></b>"
+str_ans4[3]="Линия <b><i>(34)</i></b>"
+str_ans4[4]="Линия <b><i>(АС)</i></b>"
+
+var str_ans5=new Array();
+str_ans5[0]="Линия <b><i>(КМ)</i></b>"
+str_ans5[1]="Линия <b><i>(12)</i></b>"
+str_ans5[2]="Линия <b><i>(34)</i></b>"
+str_ans5[3]="Линия <b><i>(56)</i></b>"
+str_ans5[4]="Линия <b><i>(АС)</i></b>"
+
+var answers=new Array();
+for(var j=0;j<all_cnt;j++)
+	answers[j]=0
+
+function ans()
+{
+	rad=document.test.answer;
+	var r = "";
+	for( var i = 0; i < rad.length; ++i ) 
+		if( rad[i].checked ) { r = rad[i].value; break; }
+
+	if (i==rad.length) {return;}
+	
+	if (r==right[q_num]) {r_cnt++;answers[q_num]=1;}
+	q_num++;
+	if (q_num<all_cnt)
+	{
+		document.all.tags("td")["question"].innerHTML=str[q_num];
+		document.all.tags("td")["count"].innerHTML='Вопрос '+(q_num+1)+' из '+all_cnt
+		document.test.pic1.src="./01/"+(q_num+1)+".gif";
+		for(var i = 0; i < 5; i++ ) 
+			document.all.tags("td")["ans"+(i+1)].innerHTML=eval('str_ans'+(q_num+1)+'['+i+']');
+
+		for( var i = 0; i < rad.length; ++i ) 
+			rad[i].checked=false
+		
+	}
+	else
+	{
+		test_end();
+	}
+       
+}
+
+function inittab()
+{
+document.all.tags("td")["question"].innerHTML=str[0];
+document.all.tags("td")["count"].innerHTML='Вопрос '+(q_num+1)+' из '+all_cnt;
+document.all.tags("td")["ans1"].innerHTML=str_ans1[0];
+document.all.tags("td")["ans2"].innerHTML=str_ans1[1];
+document.all.tags("td")["ans3"].innerHTML=str_ans1[2];
+document.all.tags("td")["ans4"].innerHTML=str_ans1[3];
+document.all.tags("td")["ans5"].innerHTML=str_ans1[4];
+}
+
+function test_end()
+{
+	document.cookie=answers;
+	window.location=res_loc;		
+}
+
+function Timer() 
+{
+	window.setTimeout("Timer();",1000);
+	time--;
+	scnt=scnt+step;
+	if (time<0)
+	{
+		ans();
+		test_end();
+	}	   
+	else
+	{
+	   	var str="";
+	   	for(var jj=1;jj<Math.floor(scnt);jj++)
+	   		str=str+'<td bgColor=BLUE>&nbsp;</td>';
+	   	for(var j=1;j<psize-jj+1;j++)
+	       		str=str+'<td>&nbsp;</td>';
+
+        	document.all.tags("td")["progress"].innerHTML='<table><tr><td>0</td>'+str+'<td>'+prg+'</td></tr></table>';	   
+	}	
+}
+
+
+</script>
+
+</head>
+
+<body background="bg.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/pic/bg.gif" onLoad="inittab();document.test.reset();Timer();" topmargin="0" leftmargin="0" style="font-family: Verdana; margin-top:0; margin-bottom:0">
+
+<form name="test">
+
+<div align="center">
+  <center>
+
+<table id="table1" cellpadding="2" cellspacing="2" style="border-collapse: collapse; margin-top: 0; margin-bottom: 0" bordercolor="#111111">
+
+<tr>
+  <td id="count" height="18" style="margin-top: 0; margin-bottom: 0">счетчик вопросов</td>
+    <td id="progress" height="18" style="margin-top: 0; margin-bottom: 0">время</td></tr>
+
+</table>
+
+<h2 align=right style="margin-top: 0; margin-bottom: 0">
+<span style="text-transform: uppercase; font-weight:400">
+<font color="#FF0000" size="2">Тест &quot;</font></span><span style="text-transform: uppercase"><font size="2" color="#FF0000"><span style="font-weight: 400">Многогранники&quot;</span></font></span></h2>
+<p style="margin-top: 0; margin-bottom: 0">
+<img name="pic1" src="1-5.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/009/01/1.gif"></p>
+
+<table id="tab" cellpadding="2" cellspacing="2" style="border-collapse: collapse; margin-top: 0; margin-bottom: 0" bordercolor="#111111">
+
+<tr align="center">
+  <td colspan="2" id="question" height="1" style="margin-top: 0; margin-bottom: 0" bgcolor="#00FF00">Текcт вопроса</td>    
+<tr>
+   <td id="ans1" style="margin-top: 0; margin-bottom: 0" height="20"></td>
+   <td style="margin-top: 0; margin-bottom: 0" height="20"><INPUT type="radio" name="answer" value="1"></td></tr>
+
+   <td id="ans2" style="margin-top: 0; margin-bottom: 0" height="20"></td>
+   <td style="margin-top: 0; margin-bottom: 0" height="20"><INPUT type="radio" name="answer" value="2"></td></tr>
+
+   <td id="ans3" style="margin-top: 0; margin-bottom: 0" height="20"></td>
+   <td style="margin-top: 0; margin-bottom: 0" height="20"><INPUT type="radio" name="answer" value="3"></td></tr>
+
+   <td id="ans4" style="margin-top: 0; margin-bottom: 0" height="20"></td>
+   <td style="margin-top: 0; margin-bottom: 0" height="20"><INPUT type="radio" name="answer" value="4"></td></tr>
+
+   <td id="ans5" style="margin-top: 0; margin-bottom: 0" height="20"></td>
+   <td style="margin-top: 0; margin-bottom: 0" height="20"><INPUT type="radio" name="answer" value="5"></td></tr>
+
+</table>
+
+  </center>
+</div>
+
+<center>
+<INPUT type="button" class="inp" onClick="ans()" style="background-color: #f0f0f0; font-family:Verdana" value="Ответить">
+</center>
+</form>  
+
+</body>
+</html>

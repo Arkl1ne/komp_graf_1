@@ -1,0 +1,19 @@
+h1 {font-size:15;color:#0fccfb}
+h2 {font-size:35;color:#5e11cb}
+p {color:#444444;font-size:14}
+li {color:#444444;font-size:14}
+#txt {font-size:15;font-style:italic;color:#777777}
+#txtd {font-size:12;font-style:italic;color:#777777}
+dt {font-size:17;color:#777777}
+.menutab {font-size:12;width:100%; background:#304059; border:0;cellpadding:1}
+.submenutab {font-size:12;width:154; hieght:100%; background:#304059; border:0;cellpadding:1}
+.menutr {font-size:12}
+.menutd {cursor: pointer;width: 150;background:WHITESMOKE}
+.linktab {font-size:12;width:90%; background:#eeeeee; border:1;cellpadding:1}
+.pan {font-size:11;width:160; hieght:100%; background:#a040cc; border:0;cellpadding:1}
+.paneltd {font-size:13;background:#f0f0f0;width:160}
+  a:link    {text-decoration:none;color:#000000}
+  a:visited {text-decoration:none;color:#000000}
+  a:active  {text-decoration:none;color:#000000}
+input {background-color: #eFeFFF;border: 1px solid #336699}
+textarea {background-color: #eFFFFF;border: 1px solid #336699}

@@ -1,0 +1,132 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Тестирование</title>
+<script type="text/javascript" src="script1-4.js" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/005/script1.js"></script>
+
+<script language="JavaScript">
+
+var time=90;		//время на тест
+var res_loc="http://www.propro.ru/graphbook/Graphbook/book/004/005/r001.html"	//результаты
+var q_num=0;	//текущий вопрос
+var r_cnt=0;    //счетчик правильных
+var all_cnt=5;  //всего вопросов
+var prg=time;
+var psize=30;	//размер прогресс-бара
+var step=psize/time;
+var scnt=0;
+
+var q1=new Array();
+
+q1[0]="Заданные на рисунке отрезки - пересекаются"
+q1[1]="Можно ли без построения третьей проекции оценить взаимное положение отрезков?"
+q1[2]="Имеют ли отрезки общую точку?"
+q1[3]="Отрезки задают прямые общего положения"
+q1[4]="Если точки пересечения проекций отрезков лежат на одной линии связи они пересекаются"
+
+var right1=new Array();
+right1[0]=0
+right1[1]=1
+right1[2]=0
+right1[3]=0
+right1[4]=1
+
+
+var answers=new Array();
+for(var j=0;j<all_cnt;j++)
+	answers[j]=0
+
+</script>
+
+</head>
+
+<body background="bg.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/pic/bg.gif" onLoad="inittab();document.test.reset();Timer();" topmargin="0" leftmargin="0" style="font-family: Verdana">
+
+<form name="test">
+
+<table align="center" id="table1">
+<tr><td id="progress">время</td></tr>
+</table>
+
+<h2 align=right style="margin-top: 0; margin-bottom: 0">
+<span style="text-transform: uppercase; font-weight: 400">
+<font color="#FF0000" face="Verdana" size="2">Тест &quot;Взаимное расположение 
+прямых&quot;</font></span></h2>
+
+<p align="center"><img border="0" src="6-1.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/005/01/6.gif" width="121" height="261"></p>
+
+<div align="center">
+  <center>
+
+<table class="quest" id="tab" cellpadding="2" cellspacing="0" background="bg.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/pic/bg.gif" style="border-collapse: collapse" bordercolor="#111111">
+
+<tr bgColor="WHITESMOKE">
+   <td id="quest1" colspan="3">
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana">Вопрос 1</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans1" value="1">Да</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans1" value="0">Нет</font></td>
+</tr>
+
+<tr bgColor="WHITESMOKE">
+   <td id="quest2" colspan="3">
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana">Вопрос 2</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans2" value="1">Да</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans2" value="0">Нет</font></td>
+</tr>
+
+<tr bgColor="WHITESMOKE">
+   <td id="quest3" colspan="3">
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana">Вопрос 3</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans3" value="1">Да</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans3" value="0">Нет</font></td>
+</tr>
+
+<tr bgColor="WHITESMOKE">
+   <td id="quest4" colspan="3">
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana">Вопрос 4</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans4" value="1">Да</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans4" value="0">Нет</font></td>
+</tr>
+
+<tr bgColor="WHITESMOKE">
+   <td id="quest5" colspan="3">
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana">Вопрос 5</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans5" value="1">Да</font></td>
+   <td>
+   <p style="margin-top: 0; margin-bottom: 0"><font face="Verdana"><INPUT class="sel" type="radio" name="ans5" value="0">Нет</font></td>
+</tr>
+
+</table>
+
+  </center>
+</div>
+
+<center>
+<p style="margin-top: 0; margin-bottom: 0">
+<font face="Verdana">
+<INPUT type="button" class="inp" onClick="ans()" style="background-color: #f0f0f0; font-family:Verdana" value="Ответить"></font>
+</p>
+</center>
+</form>  
+
+
+
+
+
+<h2 align="center" style="margin-top: 0; margin-bottom: 0">&nbsp;</h2>
+
+
+
+
+
+</body>
+</html>

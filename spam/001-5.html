@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Тестирование</title>
+<script type="text/javascript" src="script3.js" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/006/script3.js"></script>
+
+<script language="JavaScript">
+
+var time=90;		//время на тест
+var res_loc="http://www.propro.ru/graphbook/Graphbook/book/004/006/r001.html"	//результаты
+var q_num=0;	//текущий вопрос
+var r_cnt=0;    //счетчик правильных
+var all_cnt=5;  //всего вопросов
+var prg=time;
+var psize=30;	//размер прогресс-бара
+var step=psize/time;
+var scnt=0;
+
+var str=new Array();
+
+//Вопросы
+str[0]="На каком чертеже плоскость задана тремя точками?"
+str[1]="На каком чертеже плоскость задана параллельными прямыми?"
+str[2]="На каком чертеже плоскость задана пересекающимися прямыми?"
+str[3]="На каком чертеже плоскость задана точкой и прямой?"
+str[4]="На каком чертеже плоскость задана следами?"
+
+var right=new Array();
+right[0]=3
+right[1]=4
+right[2]=2
+right[3]=1
+right[4]=5
+
+
+var answers=new Array();
+for(var j=0;j<all_cnt;j++)
+	answers[j]=0
+
+
+</script>
+
+</head>
+
+<body background="bg.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/pic/bg.gif" onLoad="inittab();document.test.reset();Timer();" topmargin="0" leftmargin="0" style="font-family: Verdana">
+
+<form name="test">
+
+<div align="center">
+
+<table id="table1" cellpadding="2">
+
+<tr><td id="count">счетчик вопросов</td>
+    <td id="progress">время</td></tr>
+</table>
+
+<h2 align=right style="margin-top: 0; margin-bottom: 0">
+<span style="font-weight: 400; text-transform: uppercase">
+<font size="2" color="#FF0000">Тест &quot;Проекции Плоскости&quot;</font></span></h2>
+
+
+<table id="tab" cellpadding="2">
+
+<tr align="center"><td colspan="5" id="question" bgcolor="#00FF00">Текcт вопроса</td></tr>    
+<tr align="center">
+   <td><img name="pic1" src="1-2.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/006/01/1.gif" width="103" height="248"></td>
+   <td><img name="pic2" src="2-1.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/006/01/2.gif" width="124" height="238"></td>
+   <td><img name="pic3" src="3-1.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/006/01/3.gif" width="123" height="262"></td>
+   <td><img name="pic4" src="4-1.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/006/01/4.gif" width="120" height="249"></td>
+   <td><img name="pic5" src="5-2.gif" tppabs="http://www.propro.ru/graphbook/Graphbook/book/004/006/01/5.gif" width="123" height="180"></td>
+</tr>
+<tr align="center">
+   <td><INPUT class="sel" type="radio" name="answer" value="1"></td>
+   <td><INPUT class="sel" type="radio" name="answer" value="2"></td>
+   <td><INPUT class="sel" type="radio" name="answer" value="3"></td>
+   <td><INPUT class="sel" type="radio" name="answer" value="4"></td>
+   <td><INPUT class="sel" type="radio" name="answer" value="5"></td>
+</tr>
+</table>
+
+</div>
+<center>
+<INPUT type="button" class="inp" onClick="ans()" style="background-color: #f0f0f0; font-family:Verdana" value="Ответить">
+</center>
+</form>  
+
+</body>
+</html>
